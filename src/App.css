@@ -1,38 +1,219 @@
-.App {
-  text-align: center;
+:root {
+  --main-bg-color: №fff;
+  --main-bg-color-2: rgb(247, 247, 245);
+  --main-bg-color-2-1: rgb(237, 237, 237);
+  --main-text-color: rgb(87, 87, 87);
+  --active-bg-color: rgb(218, 218, 218);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: San Francisco;
+  src: url(../public/family/SFProText-Bold.ttf);
+  font-weight: 700;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@font-face {
+  font-family: San Francisco;
+  src: url(../public/family/SFProText-Semibold.ttf);
+  font-weight: 600;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@font-face {
+  font-family: San Francisco;
+  src: url(../public/family/SFProText-Medium.ttf);
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: San Francisco;
+  src: url(../public/family/SFProText-Regular.ttf);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: San Francisco;
+  src: url(../public/family/SFProText-Light.ttf);
+  font-weight: 300;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  font-family: San Francisco;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+
+.notes-container {
+  display: flex;
+  height: 100vh;
+
+}
+
+.notes-list {
+  background-color: var(--main-bg-color-2);
+  flex: 20%;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.note-details {
+  width: 100%;
+  background-color: var(--main-bg-color);
+  overflow-y: auto; /* Прокрутка по вертикали для содержимого */
+  resize: none;
+}
+
+.details_main {
+  width: 100%;
+  border-radius: 5px;
+  border: solid 2px #333;
+  padding: 20px;
+}
+
+.details_container {
+  width: 90%;
+  background-color: var(--main-bg-color);
+  padding-bottom: 100px;
+  
+}
+
+.details_main {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 100%;
+  margin-top: 20px;
+  resize: none; /* Отключаем возможность изменения размеров вручную */
+  overflow: hidden; /* Отключаем прокрутку */
+
 }
 
-.App-link {
-  color: #61dafb;
+.details_main .input {
+  max-width: 100%;
+  padding: 10px 10px 5px 10px;
+  border: none;
+  background-color: var(--main-bg-color);
+  font-weight: 600;
+  font-size: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.details_main .input:focus {
+  outline: none;
+}
+
+.details_main textarea {
+  min-height: 300px;
+  max-width: 100%;
+  padding: 5px 10px 10px 10px;
+  border: none;
+  margin-bottom: 10px;
+  background-color: var(--main-bg-color);
+
+  font-weight: 400;
+}
+
+.details_main textarea:focus {
+  outline: none;
+}
+
+.details_main .details_img {
+  height: 170px;
+  margin-bottom: 20px;
+  margin-right: 10px;
+}
+
+.details_img.selected {
+  border: 2px solid var(--main-text-color); /* Например, синий цвет */
+  border-radius: 5px;
+  padding: 10px;
+}
+
+
+.details_btn {
+  border-radius: 5px;
+  background-color: var(--main-bg-color);
+  margin-top: 10px;
+  padding: 5px;
+  width: 100%;
+  font-weight: 600;
+}
+
+.create_img {
+  width: auto;
+  height: 25px;
+  margin: 5px 10px;
+
+}
+
+.title_notes {
+  font-size: 18px;
+  margin: 0 auto;
+  width: max-content;
+  margin: 10px auto;
+  font-weight: 700;
+
+}
+
+.data_notes {
+  font-size: 14px;
+  margin: 0 auto;
+  margin: 10px auto;
+  font-weight: 600;
+  color:rgb(132,132,132) ;
+}
+
+.time_notes{
+  font-size: 14px;
+  width: max-content;
+  font-weight: 600;
+  color:rgb(132,132,132) ;
+  margin-top: 5px;
+}
+
+.notelist_btn {
+  padding: 15px;
+  font-weight: 600;
+  position: relative;
+  /* Позиционируем кнопку относительно своего контейнера */
+}
+
+.notelist_btn::after {
+  content: '';
+  position: absolute;
+  left: 10%;
+  /* Отступ слева */
+  right: 10%;
+  /* Отступ справа */
+  bottom: 0;
+  /* Положение снизу */
+  border-bottom: solid 1px #333;
+  /* Граница снизу */
+}
+
+.notelist_btn:last-child::after {
+  border-bottom: none;
+  /* Убираем границу у последнего элемента */
+}
+
+.notelist_btn:last-child {
+  border-bottom: none;
+  /* Убираем границу у последнего элемента */
+}
+
+.notelist_btn:hover {
+  background-color: var(--main-bg-color-2-1);
+  /* Изменяем цвет фона при наведении */
+  transition: background-color 0.3s ease;
+}
+
+.active {
+  background-color: var(--active-bg-color);
+  /* Цвет фона для активной кнопки */
 }
